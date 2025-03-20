@@ -27,10 +27,10 @@ export default createStore({
 
       const latestPrices = Object.values(groupedByCategory).map((items) => {
         const sortedItems = items.sort((a, b) => new Date(b.datetime) - new Date(a.datetime));
-        return sortedItems.slice(0, 5); // Get top 5
+        return sortedItems.slice(0, 5); 
       });
 
-      return latestPrices.flat(); // Flatten the grouped arrays
+      return latestPrices.flat(); 
     },
 
     // Getter for filtered workshops
@@ -62,7 +62,7 @@ export default createStore({
     async fetchSpotPrices({ commit }) {
       try {
         const response = await axios.get('https://api.sharenet.co.za/api/v1/px2/spots');
-        commit('SET_SPOT_PRICES', response.data.spots || []); // Commit only the spots array
+        commit('SET_SPOT_PRICES', response.data.spots || []); 
       } catch (error) {
         console.error('Error fetching spot prices:', error);
       }
@@ -72,7 +72,7 @@ export default createStore({
     async fetchWorkshops({ commit }) {
       try {
         const response = await axios.get('https://spa-web-app.onrender.com/');
-        commit('SET_WORKSHOPS', response.data || []); // Commit workshops array
+        commit('SET_WORKSHOPS', response.data || []); 
       } catch (error) {
         console.error('Error fetching workshops:', error);
         alert('Failed to fetch workshops. Please try again later.');
@@ -91,8 +91,8 @@ export default createStore({
         console.log('Response from backend:', response.data);
 
         if (response.data.success) {
-          await dispatch('fetchWorkshops'); // Refresh workshops after successful booking
-          return Promise.resolve('Booking successful!'); // Return success message to component
+          await dispatch('fetchWorkshops'); 
+          return Promise.resolve('Booking successful!'); 
         } else {
           return Promise.reject('Booking failed. No seats available or invalid date.');
         }

@@ -210,7 +210,7 @@ export default {
 }
 
 .sort-btn:hover {
-  transform: scale(1.1); /* Slight zoom effect */
+  transform: scale(1.1);
   color: #004085;
 }
 
