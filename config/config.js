@@ -10,4 +10,10 @@ const pool = mysql.createPool({
     password: process.env.password,
 })
 
+console.log('DB Pool Initialized:', {
+    host: process.env.host,
+    user: process.env.user,
+    database: process.env.database,
+  });
+  
 export {pool}

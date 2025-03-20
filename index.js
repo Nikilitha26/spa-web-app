@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import workshopRoutes from './routes/workshopRouter.js';
+import bookingRoute from './routes/workshopRouter.js'
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(cors({
 
 // Routes
 app.use('/', workshopRoutes);
-// app.use('/api', bookingRoutes);
+app.use('/book', bookingRoute);
 
 // Start server
 const PORT = process.env.PORT || 3000;

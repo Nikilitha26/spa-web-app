@@ -1,10 +1,12 @@
 import express from 'express';
-import { fetchWorkshops } from '../controller/workshop.js';
+import { fetchWorkshops, bookWorkshopDate } from '../controller/workshop.js';
 
 const router = express.Router();
 
-// Define the route for fetching workshops
+// Route for fetching workshops
 router.get('/', fetchWorkshops);
 
-export default router;
+// Route for booking a workshop
+router.post('/book', bookWorkshopDate);
 
+export default router;
