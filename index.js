@@ -9,8 +9,10 @@ app.use(express.json());
 // Configure CORS middleware
 app.use(cors({
   origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com'], 
-  allowedHeaders: ['Content-Type', 'Authorization', 'allowedHeaders'], 
+  allowedHeaders: ['Content-Type', 'Authorization', 'allowedHeaders'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
+
 
 // Routes
 app.use('/', workshopRoutes);
