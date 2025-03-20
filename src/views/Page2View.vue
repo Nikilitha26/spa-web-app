@@ -41,8 +41,17 @@
         </div>
       </div>
     </div>
+
+    <!-- Popup Message -->
+    <div v-if="showPopup" class="popup">
+      <div class="popup-content">
+        <p>{{ popupMessage }}</p>
+        <button @click="closePopup" class="close-btn">Close</button>
+      </div>
+    </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -54,19 +63,28 @@ export default {
         email: "",
         message: "",
       },
+      showPopup: false,
+      popupMessage: "",
     };
   },
   methods: {
     handleSubmit() {
-      alert("Your message has been submitted!");
+      this.popupMessage = "Your message has been submitted!";
+      this.showPopup = true; // Display the popup
       console.log(this.form);
+
+      // Reset the form fields
       this.form.name = "";
       this.form.email = "";
       this.form.message = "";
     },
+    closePopup() {
+      this.showPopup = false; // Hide the popup
+    },
   },
 };
 </script>
+
 
 <style scoped>
 /* General Styling */
@@ -95,7 +113,6 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  /* background-color: #ffffff; */
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -195,6 +212,50 @@ export default {
   border-radius: 8px;
   border: 2px solid #eeeeee;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Popup Styling */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.popup-content p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #004085;
 }
 
 /* Responsive Design */
