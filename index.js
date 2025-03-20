@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Configure CORS middleware
 app.use(cors({
-  origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com'], 
+  origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com', 'https://spa-web-p6wfo4166-nikilitha-s-projects.vercel.app'], 
   allowedHeaders: ['Content-Type', 'Authorization', 'allowedHeaders'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
