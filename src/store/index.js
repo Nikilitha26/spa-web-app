@@ -68,16 +68,16 @@ export default createStore({
       }
     },
 
-    // Action to fetch workshops
     async fetchWorkshops({ commit }) {
       try {
         const response = await axios.get('https://spa-web-app.onrender.com/');
-        commit('SET_WORKSHOPS', response.data || []); 
+        commit('SET_WORKSHOPS', response.data || []);
       } catch (error) {
         console.error('Error fetching workshops:', error);
-        alert('Failed to fetch workshops. Please try again later.');
+        commit('SET_WORKSHOPS', []); 
       }
     },
+    
 
     // Action to book a workshop
     async bookWorkshop({ dispatch }, dateId) {
