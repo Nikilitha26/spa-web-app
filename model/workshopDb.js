@@ -8,7 +8,8 @@ const getWorkshopsDb = async () => {
     FROM workshops w
     JOIN workshop_dates wd ON w.workshop_id = wd.workshop_id
   `;
-  let [data] = await pool.query(query);
+
+  const [data] = await pool.query(query);
 
   // Group workshops by their IDs
   const groupedWorkshops = data.reduce((result, workshop) => {
@@ -36,8 +37,11 @@ const getWorkshopsDb = async () => {
     return result;
   }, []);
 
+  // Return the grouped data
   return groupedWorkshops;
 };
+
+
 
 // Book a workshop date if seats are available
 const bookWorkshopDb = async (dateId) => {

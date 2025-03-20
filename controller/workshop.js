@@ -5,12 +5,14 @@ import { getWorkshopsDb, bookWorkshopDb } from '../model/workshopDb.js';
 const fetchWorkshops = async (req, res) => {
   try {
     const workshops = await getWorkshopsDb();
+    console.log('Workshops to send:', JSON.stringify(workshops, null, 2)); // Logs the full structure
     res.status(200).json(workshops);
   } catch (error) {
-    console.error('Error fetching workshops:', error);
+    console.error('Error in fetchWorkshops:', error);
     res.status(500).json({ error: 'Failed to fetch workshops.' });
   }
 };
+
 
 // Handle booking a workshop date
 const bookWorkshopDate = async (req, res) => {
