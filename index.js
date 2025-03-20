@@ -10,7 +10,7 @@ app.use(express.json()); // To parse JSON bodies
 // Configure CORS middleware
 app.use(cors({
   origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com'], // Allowed origins
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+  allowedHeaders: ['Content-Type', 'Authorization', 'allowedHeaders'], // Specify allowed headers
 }));
 
 // Routes
