@@ -60,10 +60,10 @@ export default {
       try {
         await store.dispatch('bookWorkshop', dateId);
         popupMessage.value = 'Booking successful!';
-        showPopup.value = true; // Show the popup when booking succeeds
+        showPopup.value = true; 
       } catch (error) {
         popupMessage.value = 'An error occurred during booking.';
-        showPopup.value = true; // Show the popup for errors as well
+        showPopup.value = true;
       }
     };
 
@@ -103,7 +103,7 @@ export default {
 /* General Styles */
 .workshops-page {
   position: relative;
-  top: 80px;
+  top: 100px;
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
   color: #333;
@@ -142,19 +142,20 @@ export default {
 
 /* Workshops Container */
 .workshops-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  justify-items: center;
 }
 
-/* Workshop Card */
+
 .workshop-card {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  width: 280px;
+  width: 100%; 
+  max-width: 400px; 
   text-align: left;
   transition: transform 0.3s ease;
 }
@@ -180,6 +181,7 @@ export default {
   color: #0066cc;
 }
 
+/* Buttons */
 .book-btn {
   background-color: #0066cc;
   color: #fff;
@@ -196,7 +198,8 @@ export default {
 }
 
 .book-btn:disabled {
-  background-color: #ccc;
+  background-color: #dc3545; 
+  color: #fff;
   cursor: not-allowed;
 }
 
@@ -206,6 +209,7 @@ export default {
   color: #777;
   margin-top: 20px;
 }
+
 /* Popup Styles */
 .popup {
   position: fixed;
@@ -257,7 +261,7 @@ export default {
   }
 
   .workshop-card {
-    width: 90%;
+    width: 100%; 
   }
 
   .book-btn {
