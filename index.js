@@ -5,12 +5,12 @@ import workshopRoutes from './routes/workshopRouter.js';
 
 const app = express();
 
+app.use(express.json()); // To parse JSON bodies
 
-app.use(express.json());  // To parse JSON bodies
+// Configure CORS middleware
 app.use(cors({
-  origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com/'],
-  credentials: true,
-  headers: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin']
+  origin: ['http://localhost:8080', 'https://spa-web-app.onrender.com'], // Allowed origins
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
 }));
 
 // Routes
@@ -22,4 +22,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
 
