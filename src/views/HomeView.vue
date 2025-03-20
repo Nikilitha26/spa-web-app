@@ -15,20 +15,30 @@
       <table class="styled-table">
         <thead>
           <tr>
-            <th @click="sortBy('fullName')">
-              Full Name <span v-if="sortKey === 'fullName'">{{ sortOrder === 'asc' ? '🔼' : '🔽' }}</span>
+            <th>
+              Full Name
+              <button @click="sortBy('fullName', 'asc')" class="sort-btn">🔼</button>
+              <button @click="sortBy('fullName', 'desc')" class="sort-btn">🔽</button>
             </th>
-            <th @click="sortBy('price')">
-              Price <span v-if="sortKey === 'price'">{{ sortOrder === 'asc' ? '🔼' : '🔽' }}</span>
+            <th>
+              Price
+              <button @click="sortBy('price', 'asc')" class="sort-btn">🔼</button>
+              <button @click="sortBy('price', 'desc')" class="sort-btn">🔽</button>
             </th>
-            <th @click="sortBy('move')">
-              Move <span v-if="sortKey === 'move'">{{ sortOrder === 'asc' ? '🔼' : '🔽' }}</span>
+            <th>
+              Move
+              <button @click="sortBy('move', 'asc')" class="sort-btn">🔼</button>
+              <button @click="sortBy('move', 'desc')" class="sort-btn">🔽</button>
             </th>
-            <th @click="sortBy('pmove')">
-              Percentage Move <span v-if="sortKey === 'pmove'">{{ sortOrder === 'asc' ? '🔼' : '🔽' }}</span>
+            <th>
+              Percentage Move
+              <button @click="sortBy('pmove', 'asc')" class="sort-btn">🔼</button>
+              <button @click="sortBy('pmove', 'desc')" class="sort-btn">🔽</button>
             </th>
-            <th @click="sortBy('datetime')">
-              Time <span v-if="sortKey === 'datetime'">{{ sortOrder === 'asc' ? '🔼' : '🔽' }}</span>
+            <th>
+              Time
+              <button @click="sortBy('datetime', 'asc')" class="sort-btn">🔼</button>
+              <button @click="sortBy('datetime', 'desc')" class="sort-btn">🔽</button>
             </th>
           </tr>
         </thead>
@@ -56,7 +66,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 import { mapGetters, mapActions } from "vuex";
@@ -189,6 +198,20 @@ export default {
 
 .styled-table tbody .even-row {
   background-color: #ffffff;
+}
+.sort-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 5px;
+  color: #0066cc;
+  transition: transform 0.2s ease;
+}
+
+.sort-btn:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  color: #004085;
 }
 
 /* .styled-table tr:hover {
